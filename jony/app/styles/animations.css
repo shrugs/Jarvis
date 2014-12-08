@@ -1,0 +1,86 @@
+.slide.ng-enter,
+.slide.ng-leave
+{
+    -webkit-transition: 1s cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    -moz-transition: 1s cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    -ms-transition: 1s cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    -o-transition: 1s cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+    transition: 1s cubic-bezier(0.420, 0.000, 0.580, 1.000) all;
+}
+
+.slide.ng-enter.slide.ng-enter-active
+{
+    padding-left: inherit;
+    opacity: 1;
+}
+
+.slide.ng-enter {
+    padding-left: 100%;
+    opacity: 0;
+}
+.slide.ng-leave,
+.slide.ng-leave.slide.ng-leave-active {
+    opacity: 0;
+}
+
+
+
+
+@-webkit-keyframes pulse
+  {
+    0% {-webkit-transform: scale(0); opacity: 0;}
+    8% {-webkit-transform: scale(0); opacity: 0;}
+    15% {-webkit-transform: scale(0.1); opacity: 0.5;}
+    30% {-webkit-transform: scale(0.5); opacity: 0.5;}
+    100% {opacity: 0; -webkit-transform: scale(1);}
+  }
+
+  @-moz-keyframes pulse
+  {
+    0% {-moz-transform: scale(0); opacity: 0;}
+    8% {-moz-transform: scale(0); opacity: 0;}
+    15% {-moz-transform: scale(0.1); opacity: 0.5;}
+    30% {-moz-transform: scale(0.5); opacity: 0.5;}
+    100% {opacity: 0; -moz-transform: scale(1);}
+  }
+
+  .mic-cont
+  {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    z-index: 11;
+  }
+
+  .mic-cont .mic
+  {
+    width: 50px;
+    height: 50px;
+    background-size: 100% 100%;
+    z-index: 11;
+  }
+
+  .mic-cont .mic-ray.shouldAnimate
+  {
+    margin: 0 auto;
+    border-radius: 100px;
+    position: absolute;
+    top: 3px;
+    left: -7px;
+    z-index: 1;
+    background-color: #FF4444;
+    opacity: 0.1;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #FF4444;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -o-border-radius: 100px;
+    -ms-border-radius: 100px;
+    border-radius: 100px;
+    /* Giving Animation Function */
+    -webkit-animation: pulse 2s linear infinite;
+    -moz-animation: pulse 2s linear infinite;
+    border-image: initial;
+  }

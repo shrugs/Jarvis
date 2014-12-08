@@ -1,0 +1,89 @@
+<div class="container-fluid max">
+    <div class="row header">
+        <!-- HEADER THING -->
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 max brand">
+            <!-- Icon+Brand Top Left -->
+            <span>Jarvis</span>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 max feedback-bar">
+            <!-- Feedback Bar -->
+            <form ng-submit="submitText()" class="text-bar-container">
+                <input type="text" class="text-bar" ng-model="text" id="text-bar">
+                <img class="stop-btn" src="/images/stop-btn.png" width="35" height="35" ng-click="resetSpeechRecognition(); animateStopBtn()">
+            </form>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 max status-bar-cont">
+            <!-- Top Right -->
+            <div class="row max">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 max mic-cont">
+                    <!-- Mic Icon -->
+                    <div class="mic-cont">
+                        <div class="mic" id="mic-white" ng-click="toggleListening(); animateMic('#mic-red')">
+                            <div class="mic-ray" ng-class="{shouldAnimate: isListening}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-xs-offset-4 col-sm-8 col-sm-offset-4 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4 max status-bar">
+                    <!-- Status Report -->
+                    <span>{{status}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row main-body">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 max gutter left">
+            <!-- LEFT GUTTER -->
+            <div class="row" ng-repeat="i in [6] | range">
+                <div class="card">
+                    <div class="card-title">
+                        <span>{{cards[i].title}}</span>
+                    </div>
+                    <div class="card-data-cont">
+                        <span class="card-data">{{displayState[cards[i].method]}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 max jarvi-sim">
+            <!-- JarviSim Visualization -->
+            <div jarvisim class="max" warp="{{isListening}}"></div>
+            <div class="closed-caption">
+                <span>{{closedCaption}}</span>
+            </div>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 max gutter right">
+            <!-- RIGHT GUTTER -->
+            <div class="row slide" ng-show="song">
+                <div class="card">
+                    <div class="card-title">
+                        <span>Music</span>
+                    </div>
+                    <div class="card-data-cont">
+                        <a class="song-title" ng-href="{{song.permalink_url}}">{{song.title}}</a>
+                        <br>
+                        <a class="song-author" ng-href="{{song.user.permalink_url}}">{{song.user.username}}</a>
+                        <div><img ng-src="{{song.artwork_url}}" width="100" height="100" ng-show="song.artwork_url"></div>
+                        <hr class="thin">
+                        <div class="music-controls">
+                            <span id="play" class="glyphicon glyphicon-play" ng-hide="musicPlaying" ng-click="toggleMusic(); animateMusicButton('#pause')"></span>
+                            <span id="pause" class="glyphicon glyphicon-pause" ng-show="musicPlaying" ng-click="toggleMusic(); animateMusicButton('#play')"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-repeat="i in [6, 8] | range">
+                <div class="card">
+                    <div class="card-title">
+                        <span>{{cards[i].title}}</span>
+                    </div>
+                    <div class="card-data-cont">
+                        <span class="card-data">{{displayState[cards[i].method]}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="credits">
+                <span>Matt Condon, Ryan Acheson</span>
+            </div>
+        </div>
+    </div>
+</div>
